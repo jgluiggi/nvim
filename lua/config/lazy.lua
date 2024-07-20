@@ -1,3 +1,6 @@
+require("config.set")
+require("config.bindings")
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -21,36 +24,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-
-vim.opt.title = true
-vim.opt.bg=dark
-vim.opt.mouse={a = true}
-vim.opt.hlsearch = false
-vim.opt.clipboard:append({unnamedplus = true})
-vim.opt.showmode = false
-vim.opt.ruler = false
-vim.opt.showcmd = false
-vim.opt.cursorline = true
-vim.opt.smartindent = true
-vim.opt.cc = "100"
-vim.opt.scrolloff = 8
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.compatible = false
-vim.opt.encoding = "utf-8"
-vim.opt.wildmode = { 'longest', 'list', 'full' }
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "S", [[:%s//g<Left><Left>]])
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -60,15 +33,15 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
 
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'dracula',
+    theme = 'dracula-nvim',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -105,3 +78,6 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+-- Setting colorscheme last for reasons
+vim.cmd[[colorscheme dracula]]
