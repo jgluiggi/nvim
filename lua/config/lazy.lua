@@ -24,7 +24,6 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.title = true
 vim.opt.bg=dark
-vim.opt.guicursor={a = true}
 vim.opt.mouse={a = true}
 vim.opt.hlsearch = false
 vim.opt.clipboard:append({unnamedplus = true})
@@ -42,6 +41,10 @@ vim.opt.splitright = true
 vim.opt.compatible = false
 vim.opt.encoding = "utf-8"
 vim.opt.wildmode = { 'longest', 'list', 'full' }
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
