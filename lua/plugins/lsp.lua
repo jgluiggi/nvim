@@ -25,15 +25,16 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "bashls",
-                "clangd",
-                "html",
-                "jsonls",
-                "sqlls",
-                "yamlls",
-                "lua_ls",
-            },
+            -- Gerava logs chatos quando não conseguia instalar o que queria.
+            -- ensure_installed = {
+            --     "bashls",
+            --     "clangd",
+            --     "html",
+            --     "jsonls",
+            --     "sqlls",
+            --     "yamlls",
+            --     "lua_ls",
+            -- },
             handlers = {
                 function(server_name) -- default handler (optional)
 
