@@ -9,9 +9,9 @@ return {
                 },
                 plugins = {
                     options = {
-                    ruler = true,
-                    showcmd = true,
-                    laststatus = 3,
+                    ruler = false,
+                    showcmd = false,
+                    laststatus = 0,
                     }
                 },
             }
