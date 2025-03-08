@@ -67,7 +67,9 @@ return  {
         }, dingllm.make_anthropic_spec_curl_args, dingllm.handle_anthropic_spec_data)
       end
 
-      vim.keymap.set({ 'n', 'v' }, '<leader>i', groq_replace, { desc = 'llm groq' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>I', groq_help, { desc = 'llm groq_help' })
+      --vim.keymap.set({ 'n', 'v' }, '<leader>i', groq_replace, { desc = 'llm groq' })
+      --vim.keymap.set({ 'n', 'v' }, '<leader>I', groq_help, { desc = 'llm groq_help' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>i', anthropic_replace, { desc = 'llm anthropic' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>I', anthropic_help, { desc = 'llm anthropic_help' })
     end,
   }
