@@ -62,7 +62,7 @@ require("lazy").setup({
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox-material',
+    theme = 'tokyonight',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -100,5 +100,4 @@ require('lualine').setup {
   extensions = {}
 }
 
--- Setting colorscheme last for reasons
--- vim.cmd[[colorscheme dracula]]
+vim.cmd[[colorscheme tokyonight-storm]]

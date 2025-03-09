@@ -20,6 +20,7 @@ return {
     notifier = { enabled = true, timeout = 3000 }
   },
   keys = {
-    { "<C-\\>",      function() Snacks.terminal() end, desc = "Toggle Terminal" }
+    { "<C-\\>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<leader>B",      function() Snacks.dashboard.open(opts) end, desc = "Bring up Dashboard" }
     }
 }
