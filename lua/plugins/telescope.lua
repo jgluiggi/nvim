@@ -3,7 +3,11 @@ return {
 	dependencies = { 'nvim-lua/plenary.nvim' },
     	config = function()
 		local builtin = require('telescope.builtin')
+    local find_all = function ()
+      builtin.find_files({ hidden = true , find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' } })
+    end
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+		vim.keymap.set('n', '<leader>fa', find_all, {})
 		vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 

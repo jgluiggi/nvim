@@ -7,69 +7,88 @@ return  {
       local helpful_prompt = 'You are a helpful assistant. What I have sent are my notes so far. You are very curt, yet helpful.'
       local dingllm = require 'dingllm'
 
-      local function groq_replace()
+      local function xai_replace()
         dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.groq.com/openai/v1/chat/completions',
-          model = 'llama3-70b-8192',
-          api_key_name = 'GROQ_API_KEY',
+          url = 'https://api.x.ai/v1/chat/completions',
+          model = 'grok-2-latest',
+          api_key_name = 'XAI_API_KEY',
           system_prompt = system_prompt,
           replace = true,
         }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
       end
 
-      local function groq_help()
+      local function xai_help()
         dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.groq.com/openai/v1/chat/completions',
-          model = 'llama3-70b-8192',
-          api_key_name = 'GROQ_API_KEY',
+          url = 'https://api.x.ai/v1/chat/completions',
+          model = 'grok-2-latest',
+          api_key_name = 'XAI_API_KEY',
           system_prompt = helpful_prompt,
           replace = false,
         }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
       end
 
-      local function openai_replace()
-        dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.openai.com/v1/chat/completions',
-          model = 'gpt-4o',
-          api_key_name = 'OPENAI_API_KEY',
-          system_prompt = system_prompt,
-          replace = true,
-        }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
-      end
+      vim.keymap.set({ 'n', 'v' }, '<leader>i', xai_replace, { desc = 'llm xai' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>I', xai_help, { desc = 'llm xai_help' })
 
-      local function openai_help()
-        dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.openai.com/v1/chat/completions',
-          model = 'gpt-4o',
-          api_key_name = 'OPENAI_API_KEY',
-          system_prompt = helpful_prompt,
-          replace = false,
-        }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
-      end
+    -- local function groq_replace()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.groq.com/openai/v1/chat/completions',
+    --      model = 'llama3-70b-8192',
+    --      api_key_name = 'GROQ_API_KEY',
+    --      system_prompt = system_prompt,
+    --      replace = true,
+    --    }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
+    --  end
 
-      local function anthropic_help()
-        dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.anthropic.com/v1/messages',
-          model = 'claude-3-5-sonnet-20240620',
-          api_key_name = 'ANTHROPIC_API_KEY',
-          system_prompt = helpful_prompt,
-          replace = false,
-        }, dingllm.make_anthropic_spec_curl_args, dingllm.handle_anthropic_spec_data)
-      end
+    --  local function groq_help()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.groq.com/openai/v1/chat/completions',
+    --      model = 'llama3-70b-8192',
+    --      api_key_name = 'GROQ_API_KEY',
+    --      system_prompt = helpful_prompt,
+    --      replace = false,
+    --    }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
+    --  end
 
-      local function anthropic_replace()
-        dingllm.invoke_llm_and_stream_into_editor({
-          url = 'https://api.anthropic.com/v1/messages',
-          model = 'claude-3-5-sonnet-20240620',
-          api_key_name = 'ANTHROPIC_API_KEY',
-          system_prompt = system_prompt,
-          replace = true,
-        }, dingllm.make_anthropic_spec_curl_args, dingllm.handle_anthropic_spec_data)
-      end
+    --  local function openai_replace()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.openai.com/v1/chat/completions',
+    --      model = 'gpt-4o',
+    --      api_key_name = 'OPENAI_API_KEY',
+    --      system_prompt = system_prompt,
+    --      replace = true,
+    --    }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
+    --  end
 
-      --vim.keymap.set({ 'n', 'v' }, '<leader>i', groq_replace, { desc = 'llm groq' })
-      --vim.keymap.set({ 'n', 'v' }, '<leader>I', groq_help, { desc = 'llm groq_help' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>i', anthropic_replace, { desc = 'llm anthropic' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>I', anthropic_help, { desc = 'llm anthropic_help' })
+    --  local function openai_help()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.openai.com/v1/chat/completions',
+    --      model = 'gpt-4o',
+    --      api_key_name = 'OPENAI_API_KEY',
+    --      system_prompt = helpful_prompt,
+    --      replace = false,
+    --    }, dingllm.make_openai_spec_curl_args, dingllm.handle_openai_spec_data)
+    --  end
+
+    --  local function anthropic_help()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.anthropic.com/v1/messages',
+    --      model = 'claude-3-5-sonnet-20240620',
+    --      api_key_name = 'ANTHROPIC_API_KEY',
+    --      system_prompt = helpful_prompt,
+    --      replace = false,
+    --    }, dingllm.make_anthropic_spec_curl_args, dingllm.handle_anthropic_spec_data)
+    --  end
+
+    --  local function anthropic_replace()
+    --    dingllm.invoke_llm_and_stream_into_editor({
+    --      url = 'https://api.anthropic.com/v1/messages',
+    --      model = 'claude-3-5-sonnet-20240620',
+    --      api_key_name = 'ANTHROPIC_API_KEY',
+    --      system_prompt = system_prompt,
+    --      replace = true,
+    --    }, dingllm.make_anthropic_spec_curl_args, dingllm.handle_anthropic_spec_data)
+    --  end
+
     end,
   }
