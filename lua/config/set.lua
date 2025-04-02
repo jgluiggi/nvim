@@ -10,6 +10,7 @@ vim.opt.cursorline = true
 vim.opt.smartindent = true
 vim.opt.cc = "100"
 vim.opt.scrolloff = 8
+vim.opt.conceallevel = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitbelow = true
