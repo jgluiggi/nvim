@@ -10,7 +10,7 @@ return  {
       local function xai_replace()
         dingllm.invoke_llm_and_stream_into_editor({
           url = 'https://api.x.ai/v1/chat/completions',
-          model = 'grok-2-latest',
+          model = 'grok-code-fast-1',
           api_key_name = 'XAI_API_KEY',
           system_prompt = system_prompt,
           replace = true,
@@ -20,7 +20,7 @@ return  {
       local function xai_help()
         dingllm.invoke_llm_and_stream_into_editor({
           url = 'https://api.x.ai/v1/chat/completions',
-          model = 'grok-2-latest',
+          model = 'grok-code-fast-1',
           api_key_name = 'XAI_API_KEY',
           system_prompt = helpful_prompt,
           replace = false,
